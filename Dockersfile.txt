@@ -1,0 +1,9 @@
+# 基于官方镜像扩展
+FROM nginx:alpine
+# 设置中文环境（解决乱码）
+ENV LANG zh_CN.UTF-8
+# 复制博客文件到容器
+COPY . /usr/share/nginx/html
+# 优化缓存配置
+RUN echo "client_max_body_size 20m;" > /etc/nginx/conf.d/custom.conf
+EXPOSE 80
